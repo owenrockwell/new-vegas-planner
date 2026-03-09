@@ -1,0 +1,113 @@
+<!DOCTYPE html lang="en-AUS">
+    <head>
+        <title>New Vegas Character Creator</title>
+        <link rel="icon" href="fav.ico" type="image/x-icon">
+        <script src="main.js" defer></script>
+        <style>
+            html {
+                background: #333;
+                color: white;
+                font: 16px sans-serif;
+                padding: var(--spacer);
+                --border: 1px solid grey;
+                --gap: 5px;
+                --spacer: calc(var(--gap) * 2);
+            }
+
+            header {
+                background: #333;
+                display: grid;
+                grid-column: repeat(1fr);
+                gap: var(--spacer);
+                top: 0;
+                padding-bottom: var(--spacer);
+                position: sticky;
+                z-index: 1;
+                    
+                section {
+                    display: flex;
+                    gap: 0 var(--spacer);
+                    justify-content: space-between;
+                    height: max-content;
+                }
+            }
+
+
+            label{
+                border: var(--border);
+                display: grid;
+                gap: var(--gap);
+                grid-auto-flow: column;
+                grid-auto-columns: auto auto 4ch 8ch;
+                padding: 5px;
+
+                &:first-child {
+                    border-width: 2.5px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    background: #222;
+                }
+
+                &:last-child {
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+
+                input {
+                    color: white;
+                    background: transparent;
+                    border: none;
+                    border-radius: 4px;
+                    font: inherit;
+                    
+                    &:disabled {
+                        font-weight: bold;
+                    }
+
+                    &[type=checkbox] {
+                        max-width: 15px;
+                        margin-right: auto;
+
+                        &:is(:checked, :disabled) {
+                            filter: invert(1);
+                        }
+                    }
+                }
+            }
+            body {
+                display: grid;
+                /* flex-wrap: wrap; */
+                gap: 50px;
+                /* justify-content: space-between; */
+            }
+
+            #perks {
+            display: flex;
+
+                section {
+                    flex: 1;
+                }
+
+               article {
+                    background: #555;
+                    border: var(--border);
+                    border-radius: 10px;
+                    padding: 0 10px 10px;
+                    margin-bottom: 20px;
+                    max-width: max-content;                
+
+                    &.unrequired {
+                        border-color: crimson;
+                        opacity: 0.75;
+                        order: 1;
+                    }
+                }
+            }
+
+        </style>
+    </head>
+
+
+    <body></body>
+</html>
+
