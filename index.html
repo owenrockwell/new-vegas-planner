@@ -29,16 +29,19 @@
                     gap: 0 var(--spacer);
                     justify-content: space-between;
                     height: max-content;
+
+                    article {
+                        width: 210px;
+                    }
                 }
             }
 
 
-            label{
+            label {
                 border: var(--border);
-                display: grid;
+                display: flex;
                 gap: var(--gap);
-                grid-auto-flow: column;
-                grid-auto-columns: auto auto 4ch 8ch;
+                justify-content: flex-start;
                 padding: 5px;
 
                 &:first-child {
@@ -46,11 +49,17 @@
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
                     background: #222;
+                    grid-auto-columns: unset;
                 }
 
                 &:last-child {
                     border-bottom-left-radius: 5px;
                     border-bottom-right-radius: 5px;
+                }
+
+                span {
+                    width: 100%;
+                    display: block;
                 }
 
                 input {
@@ -59,17 +68,26 @@
                     border: none;
                     border-radius: 4px;
                     font: inherit;
+                    width: 50px;
                     
                     &:disabled {
                         font-weight: bold;
+                        max-width: 3ch;
                     }
 
                     &[type=checkbox] {
                         max-width: 15px;
-                        margin-right: auto;
 
                         &:is(:checked, :disabled) {
                             filter: invert(1);
+                        }
+                    }
+
+                    &:not([type=checkbox]) {
+                        margin-left: auto;
+                        
+                        + input {
+                            margin-left: 0;
                         }
                     }
                 }
@@ -83,6 +101,7 @@
 
             #perks {
             display: flex;
+            gap: 0 var(--spacer);
 
                 section {
                     flex: 1;
@@ -94,7 +113,7 @@
                     border-radius: 10px;
                     padding: 0 10px 10px;
                     margin-bottom: 20px;
-                    max-width: max-content;                
+                    width: 210px;
 
                     &.unrequired {
                         border-color: crimson;
