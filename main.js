@@ -42,6 +42,8 @@ function reload() {
 
 function createSPECIAL() {
   const section = document.createElement('section');
+  section.id = 'special';
+
   special.forEach(s => {
     const container = document.createElement('article');
     container.id = s.name;
@@ -171,8 +173,9 @@ function setAvailableSpecial() {
   const container =  document.getElementById('special');
   const available = 40 - special.reduce((total, i) => total + Number(i.value), 0)
 
-  if (available) {
+  if (available > 0) {
     statusBar.innerText += ` — ${available} points available`;
+    input.max = 10;
   } else {
     container.querySelectorAll('input').forEach(input => {
       input.max = input.value;
