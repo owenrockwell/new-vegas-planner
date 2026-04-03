@@ -20,6 +20,7 @@
                 grid-column: repeat(1fr);
                 gap: var(--spacer);
                 top: 0;
+                max-width: 1920px;
                 padding-bottom: var(--spacer);
                 position: sticky;
                 z-index: 1;
@@ -94,32 +95,70 @@
             }
             body {
                 display: grid;
-                /* flex-wrap: wrap; */
                 gap: 50px;
-                /* justify-content: space-between; */
             }
 
-            #perks {
+            #perks,
+            #noRequirements {
             display: flex;
             gap: 0 var(--spacer);
+            justify-content: space-between;
+            max-width: 1920px;
 
                 section {
                     flex: 1;
+                    max-width: 210px;
                 }
 
                article {
                     background: #555;
                     border: var(--border);
                     border-radius: 10px;
+                    box-sizing: border-box;
                     padding: 0 10px 10px;
                     margin-bottom: 20px;
                     width: 210px;
 
                     &.unrequired {
                         border-color: crimson;
-                        opacity: 0.75;
+                        opacity: 0.5;
                         order: 1;
                     }
+                }
+            }
+
+            #noRequirements {
+                flex-wrap: wrap;
+            }
+
+            :is(header, #perks) section article {
+                &#strength label:first-child,
+                &.strength {
+                    background-color: peru;
+                }
+                &#perception label:first-child,
+                &.perception {
+                    background-color: SeaGreen ;
+                }
+                &#endurance label:first-child,
+                &.endurance {
+                    background-color: indianred ;
+                }
+                &#charisma label:first-child,
+                &.charisma {
+                    background-color: RebeccaPurple ;
+                }
+                &#intelligence label:first-child,
+                &.intelligence {
+                    background-color: SteelBlue  ;
+                }
+                &#agility label:first-child,
+                &.agility {
+                    background-color: orchid ;
+                }
+                &#luck label:first-child,
+                &.luck {
+                    background-color: GoldenRod ;
                 }
             }
 

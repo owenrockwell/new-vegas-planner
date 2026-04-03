@@ -130,6 +130,10 @@ function createPerks() {
     })
   })
 
+  const noRequirements = document.createElement('aside');
+  noRequirements.id = 'noRequirements';
+  document.body.append(noRequirements)
+
   perks.forEach((perk) => {
     const perkCard = document.createElement("article")
     perkCard.innerHTML = `<h3>${perk.Name}</h3><p>${perk.Description}</p><i>Level: ${perk.Level}<br/>`
@@ -151,17 +155,19 @@ function createPerks() {
         perkCard.classList.add('unrequired');
       };
 
+      perkCard.classList.add(requirement.toLowerCase().replace(' ', '-'));
+
       if (!moved && requirement !== 'Level') {
-        const home = document.querySelector(`#perks .${requirement.replace(' ', '-')}`);
+        const home = document.querySelector(`#perks section.${requirement.replace(' ', '-')}`);
         if (home) {
           home.append(perkCard);
           moved = true;
         }
       }
     })
-
+    
     if (!moved) {
-      document.querySelector(`#perks .Luck`)?.append(perkCard)
+      document.getElementById(`noRequirements`)?.append(perkCard)
     }
   })
 }
@@ -177,18 +183,6 @@ function setAvailableSpecial() {
       input.max = input.value;
     })
   }
-
-
-  // const inputs = Array.from();
-
-  // const available = 40 - (); 
-
-  // if (available) {
-  //   container?.innerHTML += `${available} points available`
-  // }
-  // else {
-  //   inputs?.forEach(input => input.disabled);
-  // }
 }
 
 function lockTagSkills() {
