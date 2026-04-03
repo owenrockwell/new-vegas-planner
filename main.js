@@ -1,7 +1,3 @@
-// function levelUp() {
-//   skillPoints += Math.round(10 + (special.Intelligence/2));
-// }
-
 //UI
 let header;
 let statusBar;
@@ -33,8 +29,7 @@ function renderComponents()
   buildUI()
   calculateSkills()
   createSPECIAL()
-  // createControls(special, true)
-  createSkills(skills)
+  createSkills()
   createPerks()
   setAvailableSpecial()
   lockTagSkills()
@@ -73,44 +68,44 @@ function createSPECIAL() {
   })
 }
 
-function createSkills(array) {
-  array.forEach(s => {
+function createSkills() {
+  skills.forEach(skill => {
     const label = document.createElement('label') 
-    label.textContent = s.name.split(' ')[0];
+    label.textContent = skill.name.split(' ')[0];
     label.classList.add('skill');
     
     const input = document.createElement('input') 
-    input.id = s.name;
-    input.value = s.value;
+    input.id = skill.name;
+    input.value = skill.value;
     input.type = "Number";
     input.min = 0;
     input.max = 100;
 
     input.addEventListener("change", () => {
-      s.value = input.value;
+      skill.value = input.value;
       reload()
     })
   
     //tag-skill checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.checked = s.tagSkill;
+    checkbox.checked = skill.tagSkill;
 
     checkbox.addEventListener('change', () => {
-        s.tagSkill = checkbox.checked;
+        skill.tagSkill = checkbox.checked;
         reload();
     })
 
     //derived value
     const calculated = document.createElement('input');
-    calculated.value = s.calculatedValue;
-    input.max -= s.calculatedValue;
+    calculated.value = skill.calculatedValue;
+    input.max -= skill.calculatedValue;
     calculated.disabled = true;
     
     label.prepend(checkbox);
     label.append(calculated)
     label.append(input)
-    document.querySelector(`#${s.special}`).append(label)
+    document.querySelector(`#${skill.special}`).append(label)
     })
 }
 
@@ -165,7 +160,7 @@ function createPerks() {
         }
       }
     })
-    
+
     if (!moved) {
       document.getElementById(`noRequirements`)?.append(perkCard)
     }
